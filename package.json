@@ -1,0 +1,74 @@
+{
+  "name": "go-live-cord",
+  "version": "0.0.1",
+  "description": "GoLiveCord is a discord that sends notifications if someone goes live on Twitch",
+  "main": "backend/dist/index.js",
+  "scripts": {
+    "start:backend": "node backend/dist/index.js --max-old-space-size=512 --expose-gc",
+    "start:backend:dev": "node backend/dist/index.js --max-old-space-size=512 --expose-gc --trace_gc --trace-deprecation --trace-warnings --trace-uncaught --track-heap-objects --inspect=0.0.0.0:3000",
+    "build": "npm run build:backend && npm run build:frontend",
+    "build:dev": "npm run build:backend:dev && npm run build:frontend:dev",
+    "build:backend": "esbuild backend/src/App.ts --tree-shaking=true --target=es2020 --bundle --minify --color=true --platform=node --outfile=backend/dist/index.js",
+    "build:frontend": "rm -rf frontend/dist/* && esbuild frontend/src/App.ts --tree-shaking=true --target=es2020 --bundle --minify --color=true --loader:.mp4=copy --loader:.svg=copy --loader:.gif=copy --loader:.woff=copy --loader:.woff2=copy --loader:.eot=copy --loader:.ttf=copy --loader:.webp=copy --platform=browser --asset-names=[name] --outfile=frontend/dist/app.js",
+    "build:backend:dev": "esbuild backend/src/App.ts --tree-shaking=true --target=es2020 --bundle --color=true --platform=node --outfile=backend/dist/index.js",
+    "build:frontend:dev": "rm -rf frontend/dist/* && esbuild  frontend/src/App.ts --tree-shaking=true --target=es2020 --bundle --color=true --platform=browser --loader:.mp4=copy --loader:.svg=copy --loader:.gif=copy --loader:.woff=copy --loader:.woff2=copy --loader:.eot=copy --loader:.ttf=copy --loader:.webp=copy --asset-names=[name] --outfile=frontend/dist/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eliteSchwein/GoLiveCord.git"
+  },
+  "keywords": [
+    "twitch"
+  ],
+  "author": "tludwig-dev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eliteSchwein/GoLiveCord/issues"
+  },
+  "homepage": "https://github.com/eliteSchwein/GoLiveCord#readme",
+  "devDependencies": {
+    "@hotwired/stimulus": "^3.2.2",
+    "@mdi/font": "^7.4.47",
+    "@twurple/api": "^7.2.0",
+    "@twurple/auth": "^7.2.0",
+    "@twurple/chat": "^7.2.0",
+    "@twurple/easy-bot": "^7.2.0",
+    "@twurple/eventsub-ws": "^7.2.0",
+    "@twurple/pubsub": "^7.2.0",
+    "@types/body-parser": "^1.19.5",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.7.7",
+    "@types/readline-sync": "^1.4.8",
+    "@types/sharp": "^0.31.1",
+    "@types/uuid": "^10.0.0",
+    "@types/ws": "^8.5.12",
+    "async-wait-until": "^2.0.12",
+    "axios": "^1.7.7",
+    "bootstrap": "^5.3.3",
+    "bytes": "^3.1.2",
+    "colorts": "^0.1.63",
+    "esbuild": "^0.24.0",
+    "express": "^4.21.1",
+    "form-data": "^4.0.1",
+    "js-conf-parser": "^1.0.2",
+    "lodash": "^4.17.21",
+    "node-fetch": "^3.3.2",
+    "npm-check-updates": "^17.1.4",
+    "obs-websocket-js": "^5.0.6",
+    "querystring": "^0.2.1",
+    "readline-sync": "^1.4.10",
+    "regex-parser": "^2.3.0",
+    "shelljs": "^0.8.5",
+    "stacktrace-js": "^2.0.2",
+    "ts-node": "^10.9.2",
+    "tsparticles": "^3.5.0",
+    "typescript": "^5.6.3",
+    "uuid": "^10.0.0",
+    "websocket-ts": "^2.1.5",
+    "ws": "^8.18.0"
+  },
+  "dependencies": {
+    "sharp": "^0.33.5",
+    "systeminformation": "^5.23.5"
+  }
+}
