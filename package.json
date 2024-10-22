@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/eliteSchwein/GoLiveCord#readme",
   "devDependencies": {
+    "@discordjs/rest": "^2.4.0",
     "@hotwired/stimulus": "^3.2.2",
     "@mdi/font": "^7.4.47",
     "@twurple/api": "^7.2.0",
@@ -68,6 +69,7 @@
     "ws": "^8.18.0"
   },
   "dependencies": {
+    "discord.js": "^14.16.3",
     "sharp": "^0.33.5",
     "systeminformation": "^5.23.5"
   }
